@@ -11,3 +11,6 @@
 ## Notes
 - Not comprehensively ported to WJ 3.x
 - `wabbajack_rename_by_version.py` seems to use incorrect version numbers at the moment but the workflow is otherwise correct.
+
+## Latest Generated Data for Skyrim SE Lists
+https://docs.google.com/spreadsheets/d/1iN4C63Syx1o7maeftgjoAf4swZHPZZvSk6y_fRTLftY/

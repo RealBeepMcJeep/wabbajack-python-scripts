@@ -8,6 +8,8 @@ from zipfile import ZipFile
 
 import xxhash
 
+from util import format_json
+
 HASH_CACHE = "hashcache.sqlite"
 
 # hash notes:
@@ -21,11 +23,6 @@ HASH_CACHE = "hashcache.sqlite"
 # D:\Wabbajack>"D:\Wabbajack\2.5.3.4\wabbajack-cli.exe" hash-file -i "D:\Wabbajack\downloads\BethINI Standalone Version-4875-3-5-1593829244.zip"
 # D:\Wabbajack\downloads\BethINI Standalone Version-4875-3-5-1593829244.zip hash: bhiVn/Ul3Zs= 6e18959ff525dd9b -7215569291103102866
 
-
-def pprint_json(_json):
-    return json.dumps(_json, indent=True, sort_keys=True)
-
-
 def get_mod_data(fname):
     with ZipFile(fname, "r") as myzip:
         with myzip.open("modlist") as myfile:
@@ -36,7 +33,7 @@ def get_mod_data(fname):
 def extract_mod_data(fname):
     mod_data_fname = ".".join(fname.split(".")[0:-1]) + ".moddata.json"
     data = get_mod_data(fname)
-    pprint_data = pprint_json(data)
+    pprint_data = format_json(data)
     with open(mod_data_fname, "w") as f:
         f.write(pprint_data)
 
@@ -210,5 +207,5 @@ if __name__ == "__main__":
         input("done, press enter for errors")
         for fname, error, archive in errors:
             print(fname, error)
-            print(pprint_json(archive))
+            print(format_json(archive))
     input("done!")
